@@ -1,34 +1,9 @@
-<div class="row">
-  <div class="col-xs-12">
-    <img src="" alt="" class="img-fluid">
+<a href="#" class="list-group-item clearfix" (click)="onSelected()">
+  <div class="float-left col-md-8">
+    <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+    <p class="list-group-item-text">{{recipe.description}}</p>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <h1>Recipe Name</h1>
+  <div class="float-right col-md-4">
+    <img src="{{recipe.image}}" alt="" class="img-fluid">
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="button-group">
-      <button type="button" class="btn btn-primary dropdown-toggle">
-        Manage Recipe <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li class="dropdown-item"><a href="#">Add Ingredients to Shopping List</a></li>
-        <li class="dropdown-item"><a href="#">Edit Recipe</a></li>
-        <li class="dropdown-item"><a href="#">Delete Recipe</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    Descriptions
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    Ingredients
-  </div>
-</div>
+</a>
