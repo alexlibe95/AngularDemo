@@ -1,20 +1,10 @@
-<div class="row">
+<div class="row" style="margin-top:50px;">
   <div class="col-12">
-    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-between">
-          <button type="submit" class="btn btn-success">
-            Save
-          </button>
-          <button type="button" class="btn btn-danger">
-            Cancel
-          </button>
-        </div>
-      </div>
+    <form [formGroup]="recipeForm" (ngSubmit)="editMode ? onUpdateRecipe() : onAddRecipe()">
       <div class="row">
         <div class="col-12">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name" class="font-weight-bold">Name</label>
             <input 
               type="text" 
               id="name"
@@ -27,25 +17,26 @@
       <div class="row">
         <div class="col-12">
           <div class="form-group">
-            <label for="imagePath">Image URL</label>
+            <label for="imagePath" class="font-weight-bold">Image URL</label>
             <input 
               type="text" 
               id="imagePath"
               formControlName="imagePath"
               class="form-control"
+              #imagePath
             />
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <img src="" class="img-responsive">
+          <img [src]="imagePath.value" class="img-fluid">
         </div>
       </div>
       <div class="row">
         <div class="col-12">
           <div class="form-group">
-            <label for="description">Description</label>
+            <label for="description" class="font-weight-bold">Description</label>
             <textarea
               type="text" 
               id="description"
@@ -64,14 +55,14 @@
             [formGroupName]="i"
             style="margin-top:10px;"
           >
-            <div class="col-8">
+            <div class="col-7">
               <input 
               type="text"
               formControlName="name"
               class="form-control"
               />
             </div>
-            <div class="col-2">
+            <div class="col-3">
               <input 
               type="number"
               formControlName="amount"
@@ -79,12 +70,21 @@
               />
             </div>
             <div class="col-2">
-              <button type="button" class="btn btn-danger">X</button>
+              <button type="button" class="btn btn-danger" style="width:70%;position:absolute;" (click)="onDeleteIngredient(i)">X</button>
             </div>
           </div>
+          <br />
           <div class="row" style="margin-top:10px;">
-            <div class="col-12">
+            <div class="col-12 d-flex justify-content-between">
               <button type="button" class="btn btn-success" (click)="onAddIngredient()">Add Ingredient</button>
+              <div>
+                <button [disabled]="!recipeForm.valid" type="submit" class="btn btn-success" style="width:100px;">
+                  Save
+                </button>
+                <button type="button" class="btn btn-danger" (click)="onCancel()" style="margin-left:20px;">
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         </div>
